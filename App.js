@@ -100,16 +100,27 @@ export default function App() {
     }
   }, [currentAppState === 'active']);
 
+  const {
+    currentlyRunning,
+    availableUpdate,
+    isUpdateAvailable,
+    isUpdatePending,
+  } = Updates.useUpdates();
+
   useEffect(() => {
-    Updates.addListener((updateEvent) => {
-      console.log(
-        `🔥 Update Event: ${updateEvent.type} - ${updateEvent.message}`,
-      );
-      if (updateEvent.type === Updates.UpdateEventType.UPDATE_AVAILABLE) {
-        setUpdateIsAvailable(true);
-      }
-    });
-  }, []);
+    if (isUpdateAvailable) {
+      setUpdateIsAvailable(true);
+    }
+
+    // Updates.addListener((updateEvent) => {
+    //   console.log(
+    //     `🔥 Update Event: ${updateEvent.type} - ${updateEvent.message}`,
+    //   );
+    // if (updateEvent.type === Updates.UpdateEventType.UPDATE_AVAILABLE) {
+    //   setUpdateIsAvailable(true);
+    // }
+    // });
+  }, [isUpdateAvailable]);
 
   const { isDark, colors } = useTheme();
 
