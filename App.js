@@ -148,7 +148,7 @@ export default function App() {
                 name="Home"
                 component={StoriesScreen}
                 options={{
-                  title: Constants.manifest.name,
+                  title: Constants.expoConfig.name,
                   headerLargeTitleShadowVisible: false,
                   headerLargeTitle: true,
                   headerLargeStyle: {

@@ -137,7 +137,7 @@ export default function Comment({
       },
     },
     !disableViewThread && {
-      text: 'Share as Image…',
+      text: 'Share as Image...',
       action: () => {
         navigation.push('ThreadModal', {
           storyID,
@@ -147,7 +147,7 @@ export default function Comment({
       },
     },
     {
-      text: 'Share comment…',
+      text: 'Share comment...',
       action: () => {
         openShare({ url: hnURL });
       },

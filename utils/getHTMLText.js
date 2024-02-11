@@ -22,5 +22,5 @@ export default function (html, opts = {}) {
     txt = txt.replace(/\n\n[\n\r]+/, '\n\n');
   }
   txt = txt.trim();
-  return txt || '…';
+  return txt || '...';
 }

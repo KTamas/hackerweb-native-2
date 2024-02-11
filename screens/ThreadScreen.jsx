@@ -437,7 +437,7 @@ export default function ThreadScreen() {
                       marginLeft: 24,
                     }}
                   >
-                    Share…
+                    Share...
                   </Text>
                   <ActivityIndicator
                     color={colors.white}

@@ -130,9 +130,10 @@ export default function StoryScreen({ route, navigation }) {
       }
       fetchPromise
         .catch((e) => {
-          Alert.alert({
-            title: 'Error loading story',
-          });
+          // TODO: FIXME this crashes Expo Go in v47 at least
+          // Alert.alert({
+          //   title: 'Error loading story',
+          // });
         })
         .finally(() => {
           if (ignore) return;
@@ -198,7 +199,7 @@ export default function StoryScreen({ route, navigation }) {
             {
               title: pageTitle,
               message: pageURL,
-              options: ['Reload page', 'Open in browser…', 'Share…', 'Cancel'],
+              options: ['Reload page', 'Open in browser', 'Share...', 'Cancel'],
               cancelButtonIndex: 3,
               anchor: findNodeHandle(webButtonRef.current),
             },
@@ -265,7 +266,7 @@ export default function StoryScreen({ route, navigation }) {
         },
       },
       {
-        text: 'Share story…',
+        text: 'Share story...',
         action: () => openShare({ url: hnURL }),
       },
       { text: 'Cancel', cancel: true },

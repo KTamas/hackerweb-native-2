@@ -216,7 +216,7 @@ export default function SettingsScreen({ navigation }) {
                   }
                 }}
               >
-                <Text type="link">Rate {Constants.manifest.name}…</Text>
+                <Text type="link">Rate {Constants.expoConfig.name}...</Text>
               </ListItem>
               <ListItemSeparator />
             </>
@@ -256,7 +256,7 @@ export default function SettingsScreen({ navigation }) {
               }
             }}
           >
-            <Text type="link">Share Feedback…</Text>
+            <Text type="link">Share Feedback...</Text>
           </ListItem>
           <ListItemSeparator />
           <ListItem
@@ -307,7 +307,7 @@ export default function SettingsScreen({ navigation }) {
               );
             }}
           >
-            <Text>Clear Cache…</Text>
+            <Text>Clear Cache...</Text>
           </ListItem>
         </ListMenu>
         {!__PRODUCTION__ && (
@@ -355,7 +355,7 @@ export default function SettingsScreen({ navigation }) {
                   );
                 }}
               >
-                <Text type="link">Open Story…</Text>
+                <Text type="link">Open Story...</Text>
               </ListItem>
 
               <ListItemSeparator />
@@ -386,7 +386,7 @@ export default function SettingsScreen({ navigation }) {
                     });
                 }}
               >
-                <Text type="link">Check for Updates…</Text>
+                <Text type="link">Check for Updates...</Text>
               </ListItem>
             </ListMenu>
           </>

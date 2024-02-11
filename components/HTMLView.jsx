@@ -47,6 +47,7 @@ const nodeStyles = StyleSheet.create({
     }),
     borderRadius: 4,
     marginBottom: 12,
+    whiteSpace: 'pre-wrap'
   },
   preInner: {
     padding: 10,
