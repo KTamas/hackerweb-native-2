@@ -33,7 +33,8 @@
     "viz": "npx --yes react-native-bundle-visualizer",
     "deploy-staging": "if [ $(npm run last-prod-release --silent) = $(npm run current-prod-release --silent) ]; then if [ $(npm run last-eas-build --silent) = $(npm run current-eas-build --silent) ]; then npm run publish; else npm run eas-build-submit-ci; fi; fi",
     "deploy-production": "npm run eas-build-submit-ci-prod",
-    "expo-version": "npx expo --version"
+    "expo-version": "npx expo --version",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.21.0",
@@ -50,6 +51,7 @@
     "entities": "^4.5.0",
     "expiry-map": "~2.0.0",
     "expo": "^50.0.6",
+    "expo-application": "~5.8.3",
     "expo-blur": "~12.9.1",
     "expo-clipboard": "~5.0.1",
     "expo-constants": "~15.4.5",
@@ -84,15 +86,17 @@
     "stream": "~0.0.2",
     "strip-indent": "~4.0.0",
     "url-regex-safe": "^4.0.0",
-    "zustand": "^4.5.0",
-    "expo-application": "~5.8.3"
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-universe": "^12.0.0",
     "metro-minify-terser": "^0.80.0",
     "metro-react-native-babel-preset": "^0.77.0",
     "metro-react-native-babel-transformer": "^0.77.0",
+    "prettier": "^3.2.5",
     "react-native-svg-transformer": "~1.0.0"
   }
 }
