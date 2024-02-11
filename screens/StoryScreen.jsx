@@ -235,7 +235,7 @@ export default function StoryScreen({ route, navigation }) {
   const commentsHeaderRight = useCallback(() => {
     const options = [
       !settingsInteractions && {
-        text: 'View on HN web site',
+        text: 'View on HN',
         action: () => {
           openBrowser(hnURL);
         },

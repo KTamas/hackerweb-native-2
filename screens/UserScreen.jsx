@@ -257,7 +257,7 @@ export default function UserScreen({ route, navigation }) {
                 style={{ padding: 15 }}
               >
                 <Text type="link" center>
-                  View profile on HN web site
+                  View profile on HN
                 </Text>
               </TouchableOpacity>
             )}

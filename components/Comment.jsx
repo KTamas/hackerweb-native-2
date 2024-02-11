@@ -95,7 +95,7 @@ export default function Comment({
       },
     },
     !settingsInteractions && {
-      text: 'View comment on HN web site',
+      text: 'View comment on HN',
       action: () => {
         openBrowser(hnURL);
       },

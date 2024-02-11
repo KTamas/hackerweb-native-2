@@ -154,7 +154,7 @@ export default function SettingsScreen({ navigation }) {
             style={{ marginBottom: 8 }}
           >
             Interactions include upvoting and replying. This works by opening a
-            web view to load Hacker News web site with interactions set in the
+            web view to load Hacker News with interactions set in the
             URL.
           </Text>
           <Text size="footnote" type="insignificant">
