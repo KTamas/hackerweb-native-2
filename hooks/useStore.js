@@ -6,8 +6,10 @@ import pDebounce from 'p-debounce';
 import pMemoize from 'p-memoize/dist/index';
 import { create } from 'zustand';
 
-const STORIES_TTL = 10 * 60 * 1000; // 10 mins
-const cache = new ExpiryMap(60 * 1000);
+// const STORIES_TTL = 10 * 60 * 1000; // 10 mins
+const STORIES_TTL = 30 * 1000; // 30 seconds
+// const cache = new ExpiryMap(60 * 1000);
+const cache = new ExpiryMap(15 * 1000);
 const hooks = {
   beforeRequest: [
     (request) => {
@@ -123,6 +125,7 @@ const useStore = create((set, get) => ({
         if (stories[0]?.title) {
           console.log(`🥇 First story: ${stories[0].title}`);
         }
+        console.log(`1️⃣ Stories 0-30 fetched`);
         set({ stories });
         setItem('stories', stories, STORIES_TTL);
 
@@ -134,6 +137,7 @@ const useStore = create((set, get) => ({
               // https://stackoverflow.com/a/56757215
               (v, i, a) => a.findIndex((t) => t.id === v.id) === i,
             );
+            console.log(`2️⃣ Stories 30-60 fetched`);
             set({ stories });
             setItem('stories', stories, STORIES_TTL);
           })
