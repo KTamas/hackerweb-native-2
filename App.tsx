@@ -23,13 +23,13 @@ const BACKGROUND_BUFFER = 15 * 60 * 1000; // 15min
 const Stack = createNativeStackNavigator();
 
 global.__PRODUCTION__ = /production/i.test(Updates.releaseChannel);
-if (!__PRODUCTION__ && !global._consolelog) {
+if (!global.__PRODUCTION__ && !global._consolelog) {
   global.DEBUG_LOGS = [];
   global._consolelog = console.log;
   console.log = (...args) => {
-    if (__DEV__) _consolelog.apply(console, args);
-    DEBUG_LOGS.push({ log: args, ts: new Date() });
-    DEBUG_LOGS = DEBUG_LOGS.slice(-100); // Only log last 100
+    if (__DEV__) global._consolelog.apply(console, args);
+    global.DEBUG_LOGS.push({ log: args, ts: new Date() });
+    global.DEBUG_LOGS = global.DEBUG_LOGS.slice(-100); // Only log last 100
   };
 }
 
@@ -50,7 +50,8 @@ export default function App() {
   const updateIsAvailable = useStore((state) => state.updateIsAvailable);
   const lastBackgroundTime = useStore((state) => state.lastBackgroundTime);
   const backgroundedTooLong =
-    !!lastBackgroundTime && new Date() - lastBackgroundTime > BACKGROUND_BUFFER;
+    !!lastBackgroundTime &&
+    +new Date() - lastBackgroundTime > BACKGROUND_BUFFER;
 
   const [reloadKey, setReloadKey] = useState('');
   const reload = useCallback(() => {
@@ -92,7 +93,7 @@ export default function App() {
         }
       }
     } else if (currentAppState !== 'active') {
-      setLastBackgroundTime(new Date());
+      setLastBackgroundTime(+new Date());
     }
   }, [currentAppState === 'active']);
 

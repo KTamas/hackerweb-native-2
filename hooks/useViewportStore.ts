@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 
-const useViewportStore = create((set) => ({
+interface ViewportStore {
+  width: number;
+  height: number;
+  setViewport: (viewport: { width: number; height: number }) => void;
+}
+
+const useViewportStore = create<ViewportStore>((set) => ({
   width: 0,
   height: 0,
   setViewport: (viewport) => {

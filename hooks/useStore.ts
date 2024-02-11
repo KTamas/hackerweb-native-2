@@ -99,7 +99,37 @@ async function isExpired(key) {
   return true;
 }
 
-const useStore = create((set, get) => ({
+interface StoreState {
+  lastBackgroundTime: number | null;
+  setLastBackgroundTime: (lastBackgroundTime: number) => void;
+  updateIsAvailable: boolean;
+  setUpdateIsAvailable: (updateIsAvailable: boolean) => void;
+  stories: any[];
+  clearStories: () => void;
+  fetchStories: () => void;
+  isStoriesExpired: () => Promise<boolean>;
+  fetchStory: (id: number) => void;
+  items: Map<number, any>;
+  fetchItem: (id: number) => void;
+  minimalItems: Map<number, any>;
+  fetchMinimalItem: (id: number) => void;
+  links: string[];
+  initLinks: () => void;
+  visited: (link: string) => boolean;
+  addLink: (link: string) => void;
+  userInfo: Map<string, any>;
+  setUserInfo: (user: string, info: any) => void;
+  storyScroll: Map<number, number>;
+  setStoryScroll: (storyID: number, scrollY: number) => void;
+  settings: {
+    interactions: boolean;
+    syntaxHighlighting: boolean;
+  };
+  initSettings: () => void;
+  setSetting: (key: string, value: boolean) => void;
+}
+
+const useStore = create<StoreState>((set, get) => ({
   lastBackgroundTime: null,
   setLastBackgroundTime: (lastBackgroundTime) => {
     console.log(`🥞 setLastBackgroundTime ${lastBackgroundTime}`);
@@ -119,7 +149,7 @@ const useStore = create((set, get) => ({
       if (get().stories.length) return;
       set({ stories });
     } else {
-      const news = await api('news').json();
+      const news: any = await api('news').json();
       stories = news;
       if (stories.length) {
         if (stories[0]?.title) {
@@ -132,7 +162,7 @@ const useStore = create((set, get) => ({
         // Delay-load news2
         api('news2')
           .json()
-          .then((news2) => {
+          .then((news2: any) => {
             stories = [...news, ...news2].filter(
               // https://stackoverflow.com/a/56757215
               (v, i, a) => a.findIndex((t) => t.id === v.id) === i,
