@@ -63,7 +63,7 @@
     "expo-updates": "~0.24.10",
     "expo-web-browser": "~12.8.2",
     "htmlparser2": "^9.0.0",
-    "ky": "~0.30.0",
+    "ky": "^1.0.0",
     "p-debounce": "~4.0.0",
     "p-memoize": "^7.0.0",
     "parse5": "^7.0.0",
