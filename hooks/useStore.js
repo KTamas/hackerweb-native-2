@@ -1,11 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { arrayMoveMutable } from 'array-move';
 import ExpiryMap from 'expiry-map';
 import ky from 'ky';
 import pDebounce from 'p-debounce';
 import pMemoize from 'p-memoize/dist/index';
-import {create} from 'zustand';
+import { create } from 'zustand';
 
 const STORIES_TTL = 10 * 60 * 1000; // 10 mins
 const cache = new ExpiryMap(60 * 1000);
@@ -200,11 +199,11 @@ const useStore = create((set, get) => ({
   links: [],
   initLinks: async () => {
     console.log(`🥞 initLinks`);
-    let links = await getItem('links');
+    const links = await getItem('links');
     if (links) set({ links });
   },
   visited: (link) => {
-    let { links } = get();
+    const { links } = get();
     return links.indexOf(link) !== -1;
   },
   addLink: (link) => {
@@ -246,7 +245,7 @@ const useStore = create((set, get) => ({
   },
   initSettings: async () => {
     console.log(`🥞 initSettings`);
-    let settings = await getItem('settings');
+    const settings = await getItem('settings');
     if (settings) set({ settings });
   },
   setSetting: (key, value) => {

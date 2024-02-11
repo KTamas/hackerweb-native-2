@@ -1,22 +1,21 @@
+import {
+  useNavigation,
+  useRoute,
+  useFocusEffect,
+} from '@react-navigation/native';
 import { useCallback, useState } from 'react';
 import { PlatformColor, StyleSheet, View } from 'react-native';
-
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { useFocusEffect } from '@react-navigation/native';
 import Svg, { Path } from 'react-native-svg';
-
-import useTheme from '../hooks/useTheme';
-
-import getCommentsMetadata from '../utils/getCommentsMetadata';
-import getHTMLText from '../utils/getHTMLText';
-
-import CommentIcon from '../assets/bubble.left.svg';
 
 import Button from './Button';
 import Comment from './Comment';
 import ReadableWidthContainer from './ReadableWidthContainer';
 import Separator from './Separator';
 import Text from './Text';
+import CommentIcon from '../assets/bubble.left.svg';
+import useTheme from '../hooks/useTheme';
+import getCommentsMetadata from '../utils/getCommentsMetadata';
+import getHTMLText from '../utils/getHTMLText';
 
 const styles = StyleSheet.create({
   comment: {
@@ -42,7 +41,7 @@ function RepliesCommentsButton({
   const [pressed, setPressed] = useState(false);
   useFocusEffect(
     useCallback(() => {
-      let timer = setTimeout(() => {
+      const timer = setTimeout(() => {
         setPressed(false);
       }, 300);
       return () => clearTimeout(timer);
@@ -265,8 +264,8 @@ function suffixText(comments, repliesCount) {
         repliesCount === 2
           ? ` & ${secondComment.user}`
           : repliesCount > 1
-          ? ' & others'
-          : ''
+            ? ' & others'
+            : ''
       }`
     : '';
 }

@@ -1,22 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
+import * as entities from 'entities';
+import * as Haptics from 'expo-haptics';
+import { parseFragment } from 'parse5';
 import { useCallback, useRef, useState } from 'react';
 import { Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-
-import * as Haptics from 'expo-haptics';
-
-import * as entities from 'entities';
-import { parseFragment } from 'parse5';
 import stripIndent from 'strip-indent';
 import urlRegexSafe from 'url-regex-safe';
 
-import useStore from '../hooks/useStore';
-
-import openBrowser from '../utils/openBrowser';
-import openShare from '../utils/openShare';
-
 import Text from './Text';
 import nodeStyles from './nodeStyles';
+import useStore from '../hooks/useStore';
+import openBrowser from '../utils/openBrowser';
+import openShare from '../utils/openShare';
 
 function Link({ style, url, ...props }) {
   if (!url) return null;
@@ -130,7 +125,7 @@ function PreView({ children, style, ...props }) {
 
 function dom2elements(nodes, { parentName, level = 0, fontSize }) {
   if (!nodes || !nodes.length) return;
-  let nodeStates = [];
+  const nodeStates = [];
 
   return nodes.map((node, i) => {
     const { tagName, nodeName, childNodes } = node;

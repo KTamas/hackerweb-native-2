@@ -1,3 +1,8 @@
+import { useLayout } from '@react-native-community/hooks';
+import SegmentedControl from '@react-native-segmented-control/segmented-control';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import * as Clipboard from 'expo-clipboard';
+import * as Haptics from 'expo-haptics';
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   ActivityIndicator,
@@ -10,15 +15,8 @@ import {
   Switch,
   View,
 } from 'react-native';
-
-import { useLayout } from '@react-native-community/hooks';
-import SegmentedControl from '@react-native-segmented-control/segmented-control';
-import { useNavigation, useRoute } from '@react-navigation/native';
 import Svg, { Path } from 'react-native-svg';
 import { captureRef } from 'react-native-view-shot';
-
-import * as Clipboard from 'expo-clipboard';
-import * as Haptics from 'expo-haptics';
 
 import Button from '../components/Button';
 import Comment from '../components/Comment';
@@ -27,9 +25,7 @@ import ReadableWidthContainer from '../components/ReadableWidthContainer';
 import Separator from '../components/Separator';
 import Text from '../components/Text';
 import TimeAgo from '../components/TimeAgo';
-
 import useTheme from '../hooks/useTheme';
-
 import extractThread from '../utils/extractThread';
 import openShare from '../utils/openShare';
 import { isHTTPLink } from '../utils/url';

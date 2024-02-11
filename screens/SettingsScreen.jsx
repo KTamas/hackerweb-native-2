@@ -1,3 +1,11 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Application from 'expo-application';
+import Constants from 'expo-constants';
+import * as Device from 'expo-device';
+import * as MailComposer from 'expo-mail-composer';
+import { StatusBar } from 'expo-status-bar';
+import * as StoreReview from 'expo-store-review';
+import * as Updates from 'expo-updates';
 import { useEffect, useState } from 'react';
 import {
   Alert,
@@ -9,24 +17,12 @@ import {
   View,
 } from 'react-native';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import * as Application from 'expo-application';
-import * as Device from 'expo-device';
-import * as MailComposer from 'expo-mail-composer';
-import * as StoreReview from 'expo-store-review';
-import * as Updates from 'expo-updates';
-import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
-
 import OuterSpacer from '../components/OuterSpacer';
 import ReadableWidthContainer from '../components/ReadableWidthContainer';
 import Separator from '../components/Separator';
 import Text from '../components/Text';
-
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
-
 import openBrowser from '../utils/openBrowser';
 
 const EMAIL = 'cheeaun+hackerweb@gmail.com';
@@ -154,8 +150,7 @@ export default function SettingsScreen({ navigation }) {
             style={{ marginBottom: 8 }}
           >
             Interactions include upvoting and replying. This works by opening a
-            web view to load Hacker News with interactions set in the
-            URL.
+            web view to load Hacker News with interactions set in the URL.
           </Text>
           <Text size="footnote" type="insignificant">
             Login information and session are stored in the web view, not the

@@ -1,17 +1,13 @@
+import { useNavigation, useRoute } from '@react-navigation/native';
+import * as Application from 'expo-application';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { ActionSheetIOS, View, findNodeHandle } from 'react-native';
-
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { WebView } from 'react-native-webview';
 
-import * as Application from 'expo-application';
-
-import Text from '../components/Text';
-
-import useTheme from '../hooks/useTheme';
-
 import MoreIcon from '../assets/ellipsis.circle.svg';
+import Text from '../components/Text';
+import useTheme from '../hooks/useTheme';
 
 export default function WebViewScreen() {
   const { colors } = useTheme();

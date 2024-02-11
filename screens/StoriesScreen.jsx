@@ -1,3 +1,5 @@
+import { useAppState } from '@react-native-community/hooks';
+import { useFocusEffect } from '@react-navigation/native';
 import {
   useCallback,
   useEffect,
@@ -12,22 +14,17 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
-import { useAppState } from '@react-native-community/hooks';
-import { useFocusEffect } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import GearIcon from '../assets/gearshape.svg';
 import ListEmpty from '../components/ListEmpty';
 import ReadableWidthContainer from '../components/ReadableWidthContainer';
 import Separator from '../components/Separator';
 import StoryItem from '../components/StoryItem';
 import Text from '../components/Text';
-
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
 import useViewport from '../hooks/useViewport';
-
-import GearIcon from '../assets/gearshape.svg';
 
 const ItemSeparatorComponent = () => (
   <ReadableWidthContainer>

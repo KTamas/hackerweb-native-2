@@ -1,3 +1,6 @@
+import format from 'date-fns/format';
+import * as Haptics from 'expo-haptics';
+import ky from 'ky';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   LayoutAnimation,
@@ -7,24 +10,16 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
 import { Modalize } from 'react-native-modalize';
-
-import * as Haptics from 'expo-haptics';
-
-import format from 'date-fns/format';
-import ky from 'ky';
 
 import ActivityIndicator from '../components/ActivityIndicator';
 import HTMLView2 from '../components/HTMLView2';
 import Separator from '../components/Separator';
 import Text from '../components/Text';
 import TouchableOpacity from '../components/TouchableOpacity';
-
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
 import useViewport from '../hooks/useViewport';
-
 import openBrowser from '../utils/openBrowser';
 
 const styles = StyleSheet.create({

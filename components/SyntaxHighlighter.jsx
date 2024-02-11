@@ -1,8 +1,7 @@
 // Light build, BUT with SOME languages
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter#light-build
-import highlight from 'react-syntax-highlighter/dist/esm/highlight';
-
 import low from 'lowlight/lib/core';
+import highlight from 'react-syntax-highlighter/dist/esm/highlight';
 
 /*
  * Copied from node_modules/lowlight/index.js

@@ -1,3 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
+import format from 'date-fns/format';
+import * as Haptics from 'expo-haptics';
 import { useCallback, useRef } from 'react';
 import {
   ActionSheetIOS,
@@ -8,23 +11,15 @@ import {
   View,
   findNodeHandle,
 } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-import * as Haptics from 'expo-haptics';
-
-import format from 'date-fns/format';
-
-import useStore from '../hooks/useStore';
-import useTheme from '../hooks/useTheme';
-
-import openBrowser from '../utils/openBrowser';
-import openShare from '../utils/openShare';
 
 import HTMLView2 from './HTMLView2';
 import Text from './Text';
 import TimeAgo from './TimeAgo';
+import useStore from '../hooks/useStore';
+import useTheme from '../hooks/useTheme';
+import openBrowser from '../utils/openBrowser';
+import openShare from '../utils/openShare';
 
 const styles = StyleSheet.create({
   metadata: {

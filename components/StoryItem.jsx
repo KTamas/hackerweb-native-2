@@ -1,23 +1,18 @@
+import { useNavigation } from '@react-navigation/native';
+import * as Haptics from 'expo-haptics';
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-
-import * as Haptics from 'expo-haptics';
-
-import useStore from '../hooks/useStore';
-import useTheme from '../hooks/useTheme';
-
-import openBrowser from '../utils/openBrowser';
-import openShare from '../utils/openShare';
-import shortenNumber from '../utils/shortenNumber';
-import { isHTTPLink } from '../utils/url';
-
-import CommentIcon from '../assets/bubble.left.svg';
 
 import PrettyURL from './PrettyURL';
 import Text from './Text';
 import TimeAgo from './TimeAgo';
+import CommentIcon from '../assets/bubble.left.svg';
+import useStore from '../hooks/useStore';
+import useTheme from '../hooks/useTheme';
+import openBrowser from '../utils/openBrowser';
+import openShare from '../utils/openShare';
+import shortenNumber from '../utils/shortenNumber';
+import { isHTTPLink } from '../utils/url';
 
 const styles = StyleSheet.create({
   flex: {

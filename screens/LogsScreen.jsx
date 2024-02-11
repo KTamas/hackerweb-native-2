@@ -1,11 +1,8 @@
+import safeStringify from '@sindresorhus/safe-stringify';
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
-
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import safeStringify from '@sindresorhus/safe-stringify';
-
 import Text from '../components/Text';
-
 import useTheme from '../hooks/useTheme';
 
 const renderItem = ({ item }) => {

@@ -1,26 +1,22 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { LayoutAnimation, View } from 'react-native';
-
 import { useAppState } from '@react-native-community/hooks';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Constants from 'expo-constants';
+import { StatusBar } from 'expo-status-bar';
+import * as Updates from 'expo-updates';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { LayoutAnimation, View } from 'react-native';
 import {
   GestureHandlerRootView,
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import * as Updates from 'expo-updates';
-import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
-
-import StoriesScreen from './screens/StoriesScreen';
-
 import Text from './components/Text';
-
 import useStore from './hooks/useStore';
 import useTheme from './hooks/useTheme';
 import useViewportStore from './hooks/useViewportStore';
+import StoriesScreen from './screens/StoriesScreen';
 
 const BACKGROUND_BUFFER = 15 * 60 * 1000; // 15min
 

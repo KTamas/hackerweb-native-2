@@ -1,3 +1,5 @@
+import * as Haptics from 'expo-haptics';
+import hljs from 'highlight.js/lib/core';
 import { useRef } from 'react';
 import {
   ActionSheetIOS,
@@ -6,20 +8,14 @@ import {
   findNodeHandle,
   useWindowDimensions,
 } from 'react-native';
-
 import a11yDark from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
 import a11yLight from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-light';
-
-import * as Haptics from 'expo-haptics';
-
-import hljs from 'highlight.js/lib/core';
 import stripIndent from 'strip-indent';
-
-import useTheme from '../hooks/useTheme';
 
 import SyntaxHighlighter from './SyntaxHighlighter';
 import Text from './Text';
 import nodeStyles from './nodeStyles';
+import useTheme from '../hooks/useTheme';
 
 const codeTextColorsLight = {};
 Object.entries(a11yLight).forEach(([key, value]) => {

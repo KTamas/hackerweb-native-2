@@ -1,3 +1,10 @@
+import { useAppState } from '@react-native-community/hooks';
+import SegmentedControl from '@react-native-segmented-control/segmented-control';
+import { useFocusEffect } from '@react-navigation/native';
+import format from 'date-fns/format';
+import * as Application from 'expo-application';
+import { BlurView } from 'expo-blur';
+import * as Haptics from 'expo-haptics';
 import {
   useCallback,
   useEffect,
@@ -19,20 +26,14 @@ import {
   findNodeHandle,
 } from 'react-native';
 
-import { useAppState } from '@react-native-community/hooks';
-import SegmentedControl from '@react-native-segmented-control/segmented-control';
-import { useFocusEffect } from '@react-navigation/native';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { URL } from 'react-native-url-polyfill';
 import { WebView } from 'react-native-webview';
 
-import * as Application from 'expo-application';
-import * as Haptics from 'expo-haptics';
-import { BlurView } from 'expo-blur';
-
-import format from 'date-fns/format';
-
+import BackIcon from '../assets/chevron.backward.svg';
+import MoreIcon from '../assets/ellipsis.circle.svg';
+import ShareIcon from '../assets/square.and.arrow.up.svg';
 import CommentContainer from '../components/CommentContainer';
 import CommentPage from '../components/CommentPage';
 import HTMLView2 from '../components/HTMLView2';
@@ -44,21 +45,15 @@ import Separator from '../components/Separator';
 import Text from '../components/Text';
 import TimeAgo from '../components/TimeAgo';
 import TouchableHighlight from '../components/TouchableHighlight';
-
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
 import useViewport from '../hooks/useViewport';
-
 import openBrowser from '../utils/openBrowser';
 import openShare from '../utils/openShare';
 import proxyItem from '../utils/proxyItem';
 import repliesCount2MaxWeight from '../utils/repliesCount2MaxWeight';
 import shortenNumber from '../utils/shortenNumber';
 import { isHTTPLink } from '../utils/url';
-
-import BackIcon from '../assets/chevron.backward.svg';
-import MoreIcon from '../assets/ellipsis.circle.svg';
-import ShareIcon from '../assets/square.and.arrow.up.svg';
 
 const styles = StyleSheet.create({
   storyInfo: {
@@ -312,10 +307,10 @@ export default function StoryScreen({ route, navigation }) {
   const titleSize = underViewableHeight
     ? 'title3'
     : titleLength < 50
-    ? 'title1'
-    : titleLength < 100
-    ? 'title2'
-    : 'title3';
+      ? 'title1'
+      : titleLength < 100
+        ? 'title2'
+        : 'title3';
 
   const TitleComponent = useMemo(
     () => (
@@ -329,7 +324,7 @@ export default function StoryScreen({ route, navigation }) {
   const repliesCount = comments?.length;
 
   let maxPollPoints = 0;
-  if (!!poll) {
+  if (poll) {
     maxPollPoints = poll.reduce((acc, p) => Math.max(acc, p.points), 0);
   }
 

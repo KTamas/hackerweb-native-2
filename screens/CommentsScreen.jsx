@@ -1,3 +1,10 @@
+import { useAppState } from '@react-native-community/hooks';
+import MaskedView from '@react-native-masked-view/masked-view';
+import { useFocusEffect } from '@react-navigation/native';
+import { BlurView } from 'expo-blur';
+import * as Haptics from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Animated,
@@ -9,18 +16,10 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
-
-import { useAppState } from '@react-native-community/hooks';
-import MaskedView from '@react-native-masked-view/masked-view';
-import { useFocusEffect } from '@react-navigation/native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import * as Haptics from 'expo-haptics';
-import { BlurView } from 'expo-blur';
-import { LinearGradient } from 'expo-linear-gradient';
-import { StatusBar } from 'expo-status-bar';
-
+import CloseIcon from '../assets/xmark.circle.svg';
 import CommentContainer from '../components/CommentContainer';
 import CommentPage from '../components/CommentPage';
 import HTMLView2 from '../components/HTMLView2';
@@ -29,16 +28,12 @@ import ReadableWidthContainer from '../components/ReadableWidthContainer';
 import Separator from '../components/Separator';
 import Text from '../components/Text';
 import TimeAgo from '../components/TimeAgo';
-
 import useBottomSheetHeaderHeight from '../hooks/useBottomSheetHeaderHeight';
 import useTheme from '../hooks/useTheme';
 import useViewport from '../hooks/useViewport';
-
 import getCommentsMetadata from '../utils/getCommentsMetadata';
 import getHTMLText from '../utils/getHTMLText';
 import repliesCount2MaxWeight from '../utils/repliesCount2MaxWeight';
-
-import CloseIcon from '../assets/xmark.circle.svg';
 
 function FadedContent({ maxHeight, children, onPress, ...props }) {
   const [expanded, setExpanded] = useState(false);

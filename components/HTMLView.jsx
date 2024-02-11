@@ -1,3 +1,7 @@
+import { DomHandler } from 'domhandler';
+import * as entities from 'entities';
+import * as Haptics from 'expo-haptics';
+import { Parser } from 'htmlparser2';
 import { useEffect, useState } from 'react';
 import {
   DynamicColorIOS,
@@ -7,19 +11,12 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
-
-import * as Haptics from 'expo-haptics';
-
-import * as entities from 'entities';
-import { DomHandler } from 'domhandler';
-import { Parser } from 'htmlparser2';
 import stripIndent from 'strip-indent';
 import urlRegexSafe from 'url-regex-safe';
 
+import Text from './Text';
 import openBrowser from '../utils/openBrowser';
 import openShare from '../utils/openShare';
-
-import Text from './Text';
 
 const baseFontSize = 15;
 const nodeStyles = StyleSheet.create({
@@ -47,7 +44,7 @@ const nodeStyles = StyleSheet.create({
     }),
     borderRadius: 4,
     marginBottom: 12,
-    whiteSpace: 'pre-wrap'
+    whiteSpace: 'pre-wrap',
   },
   preInner: {
     padding: 10,
@@ -98,7 +95,7 @@ function dom2elements(nodes, parentName) {
     const key = (name || type) + '-' + Math.random();
     if (type === 'tag') {
       const style = nodeStyles[name || 'default'];
-      var elements = dom2elements(children, name);
+      const elements = dom2elements(children, name);
       if (!elements) return null;
       if (name === 'pre') {
         return <PreView key={key}>{elements}</PreView>;
