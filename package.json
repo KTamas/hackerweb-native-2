@@ -69,6 +69,7 @@
     "p-debounce": "~4.0.0",
     "p-memoize": "^7.0.0",
     "parse5": "^7.0.0",
+    "prettier-plugin-organize-imports": "^3.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.73.4",
@@ -90,15 +91,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@types/react": "~18.2.45",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-config-universe": "^12.0.0",
     "metro-minify-terser": "^0.80.0",
     "metro-react-native-babel-preset": "^0.77.0",
     "metro-react-native-babel-transformer": "^0.77.0",
     "prettier": "^3.2.5",
     "react-native-svg-transformer": "~1.0.0",
-    "@types/react": "~18.2.45",
     "typescript": "^5.3.3"
   }
 }

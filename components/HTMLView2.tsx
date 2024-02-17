@@ -7,11 +7,11 @@ import { Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import stripIndent from 'strip-indent';
 import urlRegexSafe from 'url-regex-safe';
 
-import Text from './Text';
-import nodeStyles from './nodeStyles';
 import useStore from '../hooks/useStore';
 import openBrowser from '../utils/openBrowser';
 import openShare from '../utils/openShare';
+import Text from './Text';
+import nodeStyles from './nodeStyles';
 
 function Link({ style, url, ...props }) {
   if (!url) return null;
@@ -331,7 +331,12 @@ const urlRegex = urlRegexSafe({
   strict: true,
 });
 
-export default function HTMLView2({ html, linkify, fontSize = 15, DEBUG }) {
+export default function HTMLView2({
+  html,
+  linkify,
+  fontSize = 15,
+  DEBUG = false,
+}) {
   if (!html || !html.trim()) return null;
   if (linkify) {
     const containsLink = /<\/a>/i.test(html);

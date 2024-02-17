@@ -12,10 +12,10 @@ import a11yDark from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
 import a11yLight from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-light';
 import stripIndent from 'strip-indent';
 
+import useTheme from '../hooks/useTheme';
 import SyntaxHighlighter from './SyntaxHighlighter';
 import Text from './Text';
 import nodeStyles from './nodeStyles';
-import useTheme from '../hooks/useTheme';
 
 const codeTextColorsLight = {};
 Object.entries(a11yLight).forEach(([key, value]) => {

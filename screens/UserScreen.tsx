@@ -1,5 +1,4 @@
 import format from 'date-fns/format';
-import * as Haptics from 'expo-haptics';
 import ky from 'ky';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {

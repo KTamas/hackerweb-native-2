@@ -1,9 +1,9 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import * as Application from 'expo-application';
 import { useLayoutEffect, useRef, useState } from 'react';
-import { ActionSheetIOS, View, findNodeHandle } from 'react-native';
+import { ActionSheetIOS, Linking, View, findNodeHandle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { WebView } from 'react-native-webview';
+import { WebView, WebViewNavigation } from 'react-native-webview';
 
 import MoreIcon from '../assets/ellipsis.circle.svg';
 import Text from '../components/Text';
@@ -14,9 +14,9 @@ export default function WebViewScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const { url, injectedJavaScript = '' } = route.params;
-  if (!url) return null;
+  // if (!url) return null;
 
-  const [navState, setNavState] = useState({});
+  const [navState, setNavState] = useState<WebViewNavigation>();
   const webButtonRef = useRef();
   const webViewRef = useRef();
 
@@ -122,6 +122,7 @@ export default function WebViewScreen() {
     });
   }, [navState, url]);
 
+  if (!url) return null;
   return (
     <WebView
       ref={webViewRef}

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 import * as Haptics from 'expo-haptics';
 import { useCallback, useRef } from 'react';
 import {
@@ -13,13 +13,13 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import HTMLView2 from './HTMLView2';
-import Text from './Text';
-import TimeAgo from './TimeAgo';
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
 import openBrowser from '../utils/openBrowser';
 import openShare from '../utils/openShare';
+import HTMLView2 from './HTMLView2';
+import Text from './Text';
+import TimeAgo from './TimeAgo';
 
 const styles = StyleSheet.create({
   metadata: {
@@ -61,7 +61,6 @@ export default function Comment({
   );
   const settingsInteractions = useStore((state) => state.settings.interactions);
 
-  if (dead || (deleted && !comments.length)) return null;
   const hnURL = `https://news.ycombinator.com/item?id=${id}`;
 
   const scaleAnim = useRef(new Animated.Value(1)).current;
@@ -173,6 +172,8 @@ export default function Comment({
       },
     );
   }, [options, user, datetime, hnURL]);
+
+  if (dead || (deleted && !comments.length)) return null;
 
   return (
     <Pressable
