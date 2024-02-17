@@ -106,7 +106,7 @@ interface StoreState {
   setUpdateIsAvailable: (updateIsAvailable: boolean) => void;
   stories: any[];
   clearStories: () => void;
-  fetchStories: () => void;
+  fetchStories: () => Promise<unknown>;
   isStoriesExpired: () => Promise<boolean>;
   fetchStory: (id: number) => void;
   items: Map<number, any>;
@@ -155,7 +155,7 @@ const useStore = create<StoreState>((set, get) => ({
         if (stories[0]?.title) {
           console.log(`🥇 First story: ${stories[0].title}`);
         }
-        console.log(`1️⃣ Stories 0-30 fetched`);
+        console.log(`1️⃣  Stories 0-30 fetched`);
         set({ stories });
         setItem('stories', stories, STORIES_TTL);
 
@@ -167,7 +167,7 @@ const useStore = create<StoreState>((set, get) => ({
               // https://stackoverflow.com/a/56757215
               (v, i, a) => a.findIndex((t) => t.id === v.id) === i,
             );
-            console.log(`2️⃣ Stories 30-60 fetched`);
+            console.log(`2️⃣  Stories 30-60 fetched`);
             set({ stories });
             setItem('stories', stories, STORIES_TTL);
           })
