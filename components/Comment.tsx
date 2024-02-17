@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
 import openBrowser from '../utils/openBrowser';
@@ -43,10 +44,10 @@ const styles = StyleSheet.create({
 export default function Comment({
   item,
   storyID,
-  disableViewThread,
-  significant,
+  disableViewThread = false,
+  significant = false,
 }) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const { colors } = useTheme();
   const { id, user, time, content, deleted, dead, comments } = item;
   const datetime = new Date(time * 1000);

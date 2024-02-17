@@ -18,6 +18,7 @@ import {
 import Svg, { Path } from 'react-native-svg';
 import { captureRef } from 'react-native-view-shot';
 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Button from '../components/Button';
 import Comment from '../components/Comment';
 import PrettyURL from '../components/PrettyURL';
@@ -85,7 +86,7 @@ function TableItem(props) {
 
 export default function ThreadScreen() {
   const { isDark, colors } = useTheme();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const route = useRoute();
   const { storyID, commentID, tab = 'thread' } = route.params;
   if (!storyID || !commentID) return null;

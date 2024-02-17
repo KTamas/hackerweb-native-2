@@ -72,9 +72,15 @@ export default function StoriesScreen({ navigation }) {
     let ignore = false;
     setStoriesLoading(true);
     fetchStories().finally(() => {
+      console.log('🤙 onFetchStories finally');
       if (ignore) return;
+      console.log('🤙 onFetchStories finally not returned after ignore');
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setStoriesLoading(false);
+      // not quite good yet
+      // if (stories.length > 30) {
+      //   setShowMore(true);
+      // }
     });
 
     return () => {
@@ -193,7 +199,7 @@ export default function StoriesScreen({ navigation }) {
             >
               <View style={{ padding: 15, marginBottom: 30 }}>
                 <Text type="link" center>
-                  More&hellip;
+                  More...
                 </Text>
               </View>
             </TouchableOpacity>

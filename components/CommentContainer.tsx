@@ -1,21 +1,22 @@
 import {
+  useFocusEffect,
   useNavigation,
   useRoute,
-  useFocusEffect,
 } from '@react-navigation/native';
 import { useCallback, useState } from 'react';
 import { PlatformColor, StyleSheet, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import CommentIcon from '../assets/bubble.left.svg';
+import useTheme from '../hooks/useTheme';
+import getCommentsMetadata from '../utils/getCommentsMetadata';
+import getHTMLText from '../utils/getHTMLText';
 import Button from './Button';
 import Comment from './Comment';
 import ReadableWidthContainer from './ReadableWidthContainer';
 import Separator from './Separator';
 import Text from './Text';
-import CommentIcon from '../assets/bubble.left.svg';
-import useTheme from '../hooks/useTheme';
-import getCommentsMetadata from '../utils/getCommentsMetadata';
-import getHTMLText from '../utils/getHTMLText';
 
 const styles = StyleSheet.create({
   comment: {
@@ -185,9 +186,7 @@ function InnerCommentContainer({
   last = false,
   storyID,
 }) {
-  if (item.dead || (item.deleted && !item.comments.length)) return null;
-
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const { zIndex = 0 } = useRoute().params;
   const { repliesCount, totalComments } = getCommentsMetadata(item);
   const totalWeight =
@@ -199,6 +198,8 @@ function InnerCommentContainer({
     comments.length === 1 &&
     !comments[0].comments?.length &&
     comments[0].content.length <= 140;
+
+  if (item.dead || (item.deleted && !item.comments.length)) return null;
 
   return (
     <View style={styles.innerComment} key={item.id}>
@@ -272,7 +273,7 @@ function suffixText(comments, repliesCount) {
 
 export default function CommentContainer({ item, maxWeight = 5, storyID }) {
   const { zIndex = 0 } = useRoute().params;
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   if (item.dead || (item.deleted && !item.comments.length)) return null;
 

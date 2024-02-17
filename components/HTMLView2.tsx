@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as entities from 'entities';
 import * as Haptics from 'expo-haptics';
 import { parseFragment } from 'parse5';
@@ -14,14 +15,12 @@ import Text from './Text';
 import nodeStyles from './nodeStyles';
 
 function Link({ style, url, ...props }) {
-  if (!url) return null;
-
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const fetchMinimalItem = useStore((state) => state.fetchMinimalItem);
   const [loading, setLoading] = useState(false);
   const addLink = useStore((state) => state.addLink);
   const visited = useStore(useCallback((state) => state.visited(url), [url]));
-
+  if (!url) return null;
   return (
     <Text
       {...props}
@@ -333,7 +332,7 @@ const urlRegex = urlRegexSafe({
 
 export default function HTMLView2({
   html,
-  linkify,
+  linkify = false,
   fontSize = 15,
   DEBUG = false,
 }) {

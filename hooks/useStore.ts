@@ -94,6 +94,7 @@ async function isExpired(key) {
   const json = await AsyncStorage.getItem(key);
   if (json) {
     const { expire } = JSON.parse(json);
+    console.log('🕰️ expire: ', expire);
     return expire && expire <= Date.now();
   }
   return true;
@@ -112,7 +113,7 @@ interface StoreState {
   items: Map<number, any>;
   fetchItem: (id: number) => void;
   minimalItems: Map<number, any>;
-  fetchMinimalItem: (id: number) => void;
+  fetchMinimalItem: (id: number) => Promise<any>;
   links: string[];
   initLinks: () => void;
   visited: (link: string) => boolean;
@@ -150,6 +151,7 @@ const useStore = create<StoreState>((set, get) => ({
       set({ stories });
     } else {
       const news: any = await api('news').json();
+      console.log('🥞 fetchStories news');
       stories = news;
       if (stories.length) {
         if (stories[0]?.title) {
@@ -159,10 +161,11 @@ const useStore = create<StoreState>((set, get) => ({
         set({ stories });
         setItem('stories', stories, STORIES_TTL);
 
-        // Delay-load news2
+        // Delay-load  news2
         api('news2')
           .json()
           .then((news2: any) => {
+            console.log('🥞 fetchStories news2');
             stories = [...news, ...news2].filter(
               // https://stackoverflow.com/a/56757215
               (v, i, a) => a.findIndex((t) => t.id === v.id) === i,

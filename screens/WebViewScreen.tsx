@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as Application from 'expo-application';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { ActionSheetIOS, Linking, View, findNodeHandle } from 'react-native';
@@ -11,7 +12,7 @@ import useTheme from '../hooks/useTheme';
 
 export default function WebViewScreen() {
   const { colors } = useTheme();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const route = useRoute();
   const { url, injectedJavaScript = '' } = route.params;
   // if (!url) return null;

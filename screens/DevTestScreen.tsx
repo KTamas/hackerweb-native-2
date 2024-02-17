@@ -1,6 +1,5 @@
 import { ScrollView } from 'react-native';
 
-import HTMLView from '../components/HTMLView';
 import HTMLView2 from '../components/HTMLView2';
 import Text from '../components/Text';
 

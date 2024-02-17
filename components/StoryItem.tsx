@@ -3,9 +3,7 @@ import * as Haptics from 'expo-haptics';
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import PrettyURL from './PrettyURL';
-import Text from './Text';
-import TimeAgo from './TimeAgo';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import CommentIcon from '../assets/bubble.left.svg';
 import useStore from '../hooks/useStore';
 import useTheme from '../hooks/useTheme';
@@ -13,6 +11,9 @@ import openBrowser from '../utils/openBrowser';
 import openShare from '../utils/openShare';
 import shortenNumber from '../utils/shortenNumber';
 import { isHTTPLink } from '../utils/url';
+import PrettyURL from './PrettyURL';
+import Text from './Text';
+import TimeAgo from './TimeAgo';
 
 const styles = StyleSheet.create({
   flex: {
@@ -51,12 +52,8 @@ const styles = StyleSheet.create({
 });
 
 export default function StoryItem({ id, position }) {
-  if (!id) return null;
-
   const { colors } = useTheme();
-
-  const navigation = useNavigation();
-
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const story = useStore(
     useCallback((state) => state.stories.find((s) => s.id === id) || {}, [id]),
   );
@@ -79,6 +76,7 @@ export default function StoryItem({ id, position }) {
 
   const shortCommentsCount = shortenNumber(comments_count);
 
+  if (!id) return null;
   return (
     <Pressable
       unstable_pressDelay={130}
