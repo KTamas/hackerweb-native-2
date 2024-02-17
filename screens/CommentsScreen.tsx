@@ -2,7 +2,6 @@ import { useAppState } from '@react-native-community/hooks';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { useFocusEffect } from '@react-navigation/native';
 import { BlurView } from 'expo-blur';
-import * as Haptics from 'expo-haptics';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

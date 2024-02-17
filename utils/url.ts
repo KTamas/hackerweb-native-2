@@ -5,4 +5,4 @@ const isHTTPLink = (url) => /^https?:/.test(url);
 // if item is a story without link
 const isHNPage = (url) => /^item/i.test(url);
 
-export { isHTTPLink, isHNPage };
+export { isHNPage, isHTTPLink };

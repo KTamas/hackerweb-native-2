@@ -1,12 +1,13 @@
 <div align="center">
   <img src="assets/icon.png" width="200">
 
-  # HackerWeb 2
+# HackerWeb 2
 
 **A read-only Hacker News client.**
 <br>
 <br>
 <br>
+
 </div>
 
 HackerWeb is a super-clean Hacker News app built for maximum readability and has a lean set of features to optimize the reading experience.

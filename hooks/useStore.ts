@@ -108,7 +108,7 @@ interface StoreState {
   stories: any[];
   clearStories: () => void;
   fetchStories: () => Promise<unknown>;
-  isStoriesExpired: () => Promise<boolean>;
+  // isStoriesExpired: () => Promise<boolean>;
   fetchStory: (id: number) => void;
   items: Map<number, any>;
   fetchItem: (id: number) => void;

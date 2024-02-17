@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 1000
     },
-    "assetBundlePatterns": [
-      "assets/*"
-    ],
+    "assetBundlePatterns": ["assets/*"],
     "ios": {
       "appStoreUrl": "https://apps.apple.com/app/id1084209377",
       "bundleIdentifier": "cheeaun.hackerweb",
@@ -29,9 +27,7 @@
         "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos."
       }
     },
-    "platforms": [
-      "ios"
-    ],
+    "platforms": ["ios"],
     "web": {
       "favicon": "./assets/favicon.png"
     },
